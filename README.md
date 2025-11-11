@@ -10,19 +10,19 @@ This project focuses on predicting which employees are most likely to leave, sto
 
 By leveraging machine learning models, MLflow and  SHAP  the goal is to empower HR teams with proactive insights—helping them improve retention through monitoring model metrics. 
 
-### This is a complete, production-ready ML pipeline covering:**
+### This is a complete, production-ready ML pipeline covering:
 
-**- Data Management with Unity Catalog (secure and versioned Delta tables)**
+**Data Management with Unity Catalog (secure and versioned Delta tables)**
 
-**- Data Cleaning and Collection** 
+**-Data Cleaning and Collection** 
 
-**- Exploratory Data Analysis to capture attrition trends (Based on Demographics, Career Trajectory, Growth Opportunites and Organisation Culture)** 
+**Exploratory Data Analysis to capture attrition trends (Based on Demographics, Career Trajectory, Growth Opportunites and Organisation Culture)** 
 
-**-Data Preprocessing (Data Transformation and Feature Selection using Chi-Square and T-test)**
+**Data Preprocessing (Data Transformation and Feature Selection using Chi-Square and T-test)**
   
-**- Model training, testing with Logistic Regression, Random Forest XGBoost and Evaluation**
+**Model training, testing with Logistic Regression, Random Forest XGBoost and Evaluation**
 
-**- Model monitoring and tracking using MLflow (parameters, metrics, artifacts, comparison).**
+**Model monitoring and tracking using MLflow (parameters, metrics, artifacts, comparison).**
 
 Each stage of the pipeline was built for reproducibility, scalability, and used SHAP for interpretability.
 
@@ -32,17 +32,7 @@ Each stage of the pipeline was built for reproducibility, scalability, and used 
 
 - **Total records**: 1,470 employees
 - **Attributes**: Demographics, Job Role, Satisfaction levels, Performance metrics etc.
-
-<img width="319" height="293" alt="Screenshot 2025-10-18 at 20 10 11" src="https://github.com/user-attachments/assets/ab37f7e0-610e-4e44-b884-ee41b776ba94" />
-
-<img width="321" height="170" alt="Screenshot 2025-10-18 at 20 10 18" src="https://github.com/user-attachments/assets/cad4fc00-4556-44b7-ac0d-f17505f51a63" />
-
-#### Unique values in each category to see frequency of different values within each coulmn and how its distributed.
-
-
-<img width="681" height="302" alt="Screenshot 2025-10-18 at 20 12 14" src="https://github.com/user-attachments/assets/7ff0a416-b850-4067-a203-070e573994e0" />
-
-<img width="374" height="230" alt="Screenshot 2025-10-18 at 20 12 23" src="https://github.com/user-attachments/assets/93c8a4ad-3f8a-44ad-9047-a518e9c2deff" />
+- CHecked Unique values in each category to see frequency of different categories and its distribution. 
 
 ---
 
@@ -54,22 +44,16 @@ Created a Catalog (`ml_catalog`) and schema (`ml_schema`) under a managed volume
 
 ### Data Visualization:
 
-
-#### Visualizing Data Distribution by Department, Job Role and Job level:
+1. Data Distribution by Department, Job Role and Job level:
 
 
 <img width="578" height="455" alt="Screenshot 2025-10-07 at 16 19 49" src="https://github.com/user-attachments/assets/cb57e4bb-2196-430d-a544-9110b76b954f" />
 
 
-
 <img width="569" height="401" alt="Screenshot 2025-10-07 at 16 19 57" src="https://github.com/user-attachments/assets/1baadcaf-4d71-4041-a9f1-b832d7659f22" />
 
 
-
 <img width="583" height="344" alt="Screenshot 2025-10-07 at 16 20 13" src="https://github.com/user-attachments/assets/bd07642a-17d8-4b89-aa9a-a2eb284a6d36" />
-
-
-From the plot, we can see that most employees work in the Research and Development department, primarily in roles such as Sales Executive, Research Scientist, and Laboratory Technician. Most of these employees have educational backgrounds in Life Sciences and Medical fields. 
 
 
 
@@ -79,51 +63,34 @@ From the plot, we can see that most employees work in the Research and Developme
 <img width="512" height="625" alt="Screenshot 2025-10-07 at 16 20 34" src="https://github.com/user-attachments/assets/1b17bdc2-a6a7-4ce0-b992-dda22b0a0bcf" />
 
 
-
 <img width="527" height="628" alt="Screenshot 2025-10-07 at 16 20 49" src="https://github.com/user-attachments/assets/1ad8d5cb-d2d1-4a50-b48d-bec83261439e" />
-
 
 
 <img width="487" height="320" alt="Screenshot 2025-10-07 at 16 21 00" src="https://github.com/user-attachments/assets/48b74cab-051f-43b2-b3f6-8d4cda8e127d" />
 
 
 Features such as Distance from Home, Monthly Income, Years at Company, Years Since Last Promotion, and Total Working Years show right-skewed distributions, with most values concentrated on the lower end and a few large outliers. This skewness can negatively affect model performance.
-
-**Action:**
-To address this, we apply the log1p transformation, which compresses large values and slightly expands smaller ones—resulting in a more balanced distribution and improved model accuracy. 
-
---- 
+ 
 
 ### Feature Selection Techniques:
 
-
-**Chi- Square Testing:** 
+**Chi-Square Test and T-Test**
 
 <img width="467" height="332" alt="Screenshot 2025-10-07 at 16 21 23" src="https://github.com/user-attachments/assets/037310da-d9a0-41fa-8fc4-e888bc511620" />
 
-**T-Test:**
-
-
 <img width="456" height="311" alt="Screenshot 2025-10-07 at 16 21 37" src="https://github.com/user-attachments/assets/6e12b45b-4d18-4116-93dc-07e8f57f9bad" />
-
 
 <img width="445" height="315" alt="Screenshot 2025-10-07 at 16 21 44" src="https://github.com/user-attachments/assets/6deb6d5d-e261-4cf7-8be8-3d75ac1c8883" />
 
-
 The t-test and chi-square analyses were conducted to examine relationships between various features and employee attrition.
 
-Features such as Years Since Last Promotion, Gender, Monthly Rate, Number of Companies Worked, Percent Salary Hike, Performance Rating, Employee Number, Hourly Rate, Education, and Relationship Satisfaction showed no statistically significant relationship with attrition (all p-values > 0.05).
+___
 
-This indicates that these variables, when considered individually, do not have a strong influence on whether an employee leaves or stays. However, they may still contribute in combination with other factors when included in a predictive model.
-
-To ensure only statistically significant features contribute to the model, univariate feature selection was applied, both the tables are stored in **Unity Catalog**.
-
+## MODEL SELECTION:
 
 - Logistic regression with L1 and L2 Penality, and class weight balanced to account for coefficents and features.
 - Random forest classiffier with hyperparamters like max_depth, n_estimators which will help us to generalize well, and deal with variance and overfitting. 
 - Xgboost Classifier to deal with complex data points. 
-
-
 
 ---
 
