@@ -10,11 +10,11 @@ This project focuses on predicting which employees are most likely to leave, sto
 
 By leveraging machine learning models, MLflow and  SHAP  the goal is to empower HR teams with proactive insights—helping them improve retention through monitoring model metrics. 
 
-### This is a complete, production-ready ML pipeline covering:
+## This is a complete, production-ready ML pipeline covering:
 
 **Data Management with Unity Catalog (secure and versioned Delta tables)**
 
-**-Data Cleaning and Collection** 
+**Data Cleaning and Collection** 
 
 **Exploratory Data Analysis to capture attrition trends (Based on Demographics, Career Trajectory, Growth Opportunites and Organisation Culture)** 
 
@@ -32,7 +32,7 @@ Each stage of the pipeline was built for reproducibility, scalability, and used 
 
 - **Total records**: 1,470 employees
 - **Attributes**: Demographics, Job Role, Satisfaction levels, Performance metrics etc.
-- CHecked Unique values in each category to see frequency of different categories and its distribution. 
+- Checked Unique values in each category to see frequency of different categories and its distribution. 
 
 ---
 
@@ -44,7 +44,7 @@ Created a Catalog (`ml_catalog`) and schema (`ml_schema`) under a managed volume
 
 ### Data Visualization:
 
-1. Data Distribution by Department, Job Role and Job level:
+**1. Data Distribution by Department, Job Role and Job level:**
 
 
 <img width="578" height="455" alt="Screenshot 2025-10-07 at 16 19 49" src="https://github.com/user-attachments/assets/cb57e4bb-2196-430d-a544-9110b76b954f" />
@@ -56,8 +56,7 @@ Created a Catalog (`ml_catalog`) and schema (`ml_schema`) under a managed volume
 <img width="583" height="344" alt="Screenshot 2025-10-07 at 16 20 13" src="https://github.com/user-attachments/assets/bd07642a-17d8-4b89-aa9a-a2eb284a6d36" />
 
 
-
-### Checking Skewness and Outliers:
+**2. Skewness and Outliers:**
 
 
 <img width="512" height="625" alt="Screenshot 2025-10-07 at 16 20 34" src="https://github.com/user-attachments/assets/1b17bdc2-a6a7-4ce0-b992-dda22b0a0bcf" />
@@ -72,9 +71,9 @@ Created a Catalog (`ml_catalog`) and schema (`ml_schema`) under a managed volume
 Features such as Distance from Home, Monthly Income, Years at Company, Years Since Last Promotion, and Total Working Years show right-skewed distributions, with most values concentrated on the lower end and a few large outliers. This skewness can negatively affect model performance.
  
 
-### Feature Selection Techniques:
+## FEATURE SELECTION:
 
-**Chi-Square Test and T-Test**
+### Chi-Square Test and T-Test**
 
 <img width="467" height="332" alt="Screenshot 2025-10-07 at 16 21 23" src="https://github.com/user-attachments/assets/037310da-d9a0-41fa-8fc4-e888bc511620" />
 
@@ -94,7 +93,7 @@ ___
 
 ---
 
-## 🚀 Model Experimentation using MLFLOW**
+## 🚀 Model Experimentation using MLFLOW
 
 Setting the Experimentation inside Databricks Notebook. 
 
@@ -103,7 +102,6 @@ Setting the Experimentation inside Databricks Notebook.
 This centralized tracking ensured experiment reproducibility and logging Hyperparameter from models, metrics, artifacts and model versioning. 
 Logged key hyperparameters, evaluation metrics, trained model and visual artifacts like confusion matrix for every run — making it easy to reproduce or explain later.
 
-<img width="1030" height="317" alt="Screenshot 2025-10-18 at 20 17 42" src="https://github.com/user-attachments/assets/e61b2a07-5f45-4808-9bd1-34e19743142a" />
 
 ---
 
