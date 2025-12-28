@@ -1,15 +1,15 @@
-## Workforce Attrition Prediction with Explainable and Reproducible ML
+### Workforce Attrition Prediction with Explainable and Reproducible ML
 
 Predicting Employee churn and identifying key drivers of attrition using scalable machine learning practices. 
 Built with classification and booster algorithms. Used Unity Catalog to store models and features, and MLflow for experiment tracking, model reproducibility and transparency.
 
 ---
 
-### Problem Statement:
+#### Problem Statement:
 
 This project focuses on predicting which employees are most likely to leave, store the important predictors from feature selection in Unity Catalog for Business to use it later for comparison and decisions.  By leveraging machine learning models, MLflow and  SHAP  the goal is to empower HR teams with proactive insights—helping them improve retention through monitoring model metrics. 
 
-## ML pipeline covering:
+#### ML pipeline covering:
 
 **Data Management with Unity Catalog (secure and versioned Delta tables)**
 
@@ -25,7 +25,7 @@ This project focuses on predicting which employees are most likely to leave, sto
 
 ---
 
-### Dataset Overview:
+#### Dataset Overview:
 
 -  Attributes :Demographics, Job Role, Job Satisfaction levels and Performance metrics. 
 -  Checked Unique values in each category to see frequency of different categories and its distribution.
@@ -34,20 +34,20 @@ This project focuses on predicting which employees are most likely to leave, sto
   
 ---
 
-### Unity Catalog & Access Control:
+#### Unity Catalog & Access Control:
 
 Created a Catalog (`ml_catalog`) and schema (`ml_schema`) under a managed volume to store both the complete dataset and the training subset in Delta format. This structure enables governed, scalable, and versioned access to data for the ML workflow.
 
 ---
 
-## FEATURE SELECTION:
+#### FEATURE SELECTION:
 
 Capture attrition trends (Based on Demographics, Career Trajectory, Growth Opportunites and Organisation Culture). 
 The t-test and chi-square analyses were conducted to examine relationships between various features and employee attrition.
 
 ___
 
-## MODEL SELECTION:
+#### MODEL SELECTION:
 
 - Logistic regression with L1 and L2 Penality, and class weight balanced to account for coefficents and features.
 - Random forest classiffier with hyperparamters like max_depth, n_estimators which will help us to generalize well, and deal with variance and overfitting. 
@@ -55,7 +55,7 @@ ___
 
 ---
 
-## 🚀 Model Experimentation using MLFLOW
+#### Model Experimentation using MLFLOW:
 
 Setting the Experimentation inside Databricks Notebook. 
 
@@ -66,7 +66,7 @@ Logged key hyperparameters, evaluation metrics, trained model and visual artifac
 
 ---
 
-### MLFLOW METRICS AND DASHBOARD:  
+#### MLFLOW METRICS AND DASHBOARD:  
 
 As we can see screenshot below from Databricks MLFlow UI with Run Name, Duration of each Run and metrics logged.  Used the MLflow UI in Databricks to compare multiple runs of Logistic Regression, Random Forest, and XGBoost. 
 
