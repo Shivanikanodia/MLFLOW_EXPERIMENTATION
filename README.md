@@ -27,55 +27,22 @@ This project focuses on predicting which employees are most likely to leave, sto
 
 ### Dataset Overview:
 
-- **Attributes**: Demographics, Job Role, Satisfaction levels, Performance metrics etc.
+-  Attributes :Demographics, Job Role, Job Satisfaction levels and Performance metrics. 
 -  Checked Unique values in each category to see frequency of different categories and its distribution.
--  Identified missing values and empty strings using insull.sum()
+-  Identified missing values and empty strings using insull.sum().
+-  Features such as Distance from Home, Monthly Income, Years at Company, Years Since Last Promotion, and Total Working Years show right-skewed distributions, with most values concentrated on the lower end. Used log1p for transformation. 
   
 ---
 
-### Unity Catalog for Data Storage and Access Control:
+### Unity Catalog & Access Control:
 
 Created a Catalog (`ml_catalog`) and schema (`ml_schema`) under a managed volume to store both the complete dataset and the training subset in Delta format. This structure enables governed, scalable, and versioned access to data for the ML workflow.
 
 ---
 
-### DATA VISUALIZATION:
-
-**1.DATA DISTRIBUTION BY DEPARTMENT, JOB ROLE AND JOB LEVEL:**
-
-<img width="578" height="455" alt="Screenshot 2025-10-07 at 16 19 49" src="https://github.com/user-attachments/assets/cb57e4bb-2196-430d-a544-9110b76b954f" />
-
-<img width="569" height="401" alt="Screenshot 2025-10-07 at 16 19 57" src="https://github.com/user-attachments/assets/1baadcaf-4d71-4041-a9f1-b832d7659f22" />
-
-<img width="583" height="344" alt="Screenshot 2025-10-07 at 16 20 13" src="https://github.com/user-attachments/assets/bd07642a-17d8-4b89-aa9a-a2eb284a6d36" />
-
-
-**2.SKEWNESS AND OUTLIERS:**
-
-<img width="512" height="625" alt="Screenshot 2025-10-07 at 16 20 34" src="https://github.com/user-attachments/assets/1b17bdc2-a6a7-4ce0-b992-dda22b0a0bcf" />
-
-<img width="527" height="628" alt="Screenshot 2025-10-07 at 16 20 49" src="https://github.com/user-attachments/assets/1ad8d5cb-d2d1-4a50-b48d-bec83261439e" />
-
-<img width="487" height="320" alt="Screenshot 2025-10-07 at 16 21 00" src="https://github.com/user-attachments/assets/48b74cab-051f-43b2-b3f6-8d4cda8e127d" />
-
-
-Features such as Distance from Home, Monthly Income, Years at Company, Years Since Last Promotion, and Total Working Years show right-skewed distributions, with most values concentrated on the lower end. Used log1p for transformation. 
- 
-
 ## FEATURE SELECTION:
 
 Capture attrition trends (Based on Demographics, Career Trajectory, Growth Opportunites and Organisation Culture). 
-
-### Chi-Square Test and T-Test:
-
-<img width="467" height="332" alt="Screenshot 2025-10-07 at 16 21 23" src="https://github.com/user-attachments/assets/037310da-d9a0-41fa-8fc4-e888bc511620" />
-
-
-<img width="456" height="311" alt="Screenshot 2025-10-07 at 16 21 37" src="https://github.com/user-attachments/assets/6e12b45b-4d18-4116-93dc-07e8f57f9bad" />
-
-
-<img width="445" height="315" alt="Screenshot 2025-10-07 at 16 21 44" src="https://github.com/user-attachments/assets/6deb6d5d-e261-4cf7-8be8-3d75ac1c8883" />
-
 The t-test and chi-square analyses were conducted to examine relationships between various features and employee attrition.
 
 ___
@@ -92,9 +59,7 @@ ___
 
 Setting the Experimentation inside Databricks Notebook. 
 
-
 <img width="1039" alt="Experimentation" src="https://github.com/user-attachments/assets/a927d8d0-5ea7-4e53-8365-fdb842b5bd62" />
-
 
 This centralized tracking ensured experiment reproducibility and logging Hyperparameter from models, metrics, artifacts and model versioning. 
 Logged key hyperparameters, evaluation metrics, trained model and visual artifacts like confusion matrix for every run — making it easy to reproduce or explain later.
@@ -109,9 +74,7 @@ As we can see screenshot below from Databricks MLFlow UI with Run Name, Duration
 
 Each dashboard recorded: adjusted_f1, adjusted_precision, adjusted_recall, precision, recall and f1 score. 
 
-
 <img width="908" height="363" alt="Screenshot 2025-10-07 at 07 30 50" src="https://github.com/user-attachments/assets/fcd14556-35a6-40a7-a289-db8e17fb9729" />
-
 
 <img width="928" height="362" alt="Screenshot 2025-10-07 at 07 31 20" src="https://github.com/user-attachments/assets/f5446022-0a39-4c09-98ee-10de40d85eda" />
 
