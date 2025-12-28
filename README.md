@@ -43,7 +43,7 @@ Created a Catalog (`ml_catalog`) and schema (`ml_schema`) under a managed volume
 
 **1.DATA DISTRIBUTION BY DEPARTMENT, JOB ROLE AND JOB LEVEL:**
 
-<img width="578" height="455" alt="Screenshot 2025-10-07 at 16 19 49" src="https://github.com/user-attachments/assets/cb57e4bb-2196-430d-a544-9110b76b954f" /
+<img width="578" height="455" alt="Screenshot 2025-10-07 at 16 19 49" src="https://github.com/user-attachments/assets/cb57e4bb-2196-430d-a544-9110b76b954f" />
 
 <img width="569" height="401" alt="Screenshot 2025-10-07 at 16 19 57" src="https://github.com/user-attachments/assets/1baadcaf-4d71-4041-a9f1-b832d7659f22" />
 
